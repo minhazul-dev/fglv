@@ -58,7 +58,7 @@ const HomePage = () => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item">
-                                <a className="nav-link click-scroll" href="#top">Home</a>
+                                <a className="nav-link " href="/">Home</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link click-scroll" href="#section_2">About</a>
@@ -69,13 +69,13 @@ const HomePage = () => {
                             <li className="nav-item">
                                 <a className="nav-link click-scroll" href="#section_4">Volunteer</a>
                             </li>
-                            <li className="nav-item dropdown">
-                                <a className="nav-link click-scroll dropdown-toggle" href="#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">News</a>
-                                <ul className="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                    <li><a className="dropdown-item" href="news.html">News Listing</a></li>
-                                    <li><a className="dropdown-item" href="news-detail.html">News Detail</a></li>
-                                </ul>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/registration">Registration</a>
                             </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/registeredOrg">Registered organizations</a>
+                            </li>
+
                             <li className="nav-item">
                                 <a className="nav-link click-scroll" href="#section_6">Contact</a>
                             </li>

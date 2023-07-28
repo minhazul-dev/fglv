@@ -12,6 +12,86 @@ const RegisteredOrg = () => {
     }, [])
     return (
         <section className="section-padding" id="section_3">
+            <header className="site-header">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-8 col-12 d-flex flex-wrap">
+                            <p className="d-flex me-4 mb-0">
+                                <i className="bi-geo-alt me-2" />
+                                20, 0150 Dhaka, Bangladesh
+                            </p>
+                            <p className="d-flex mb-0">
+                                <i className="bi-envelope me-2" />
+                                <a href="mailto:info@company.com">
+                                    foodgenix6@gmail.com
+                                </a>
+                            </p>
+                        </div>
+                        <div className="col-lg-3 col-12 ms-auto d-lg-block d-none">
+                            <ul className="social-icon">
+                                <li className="social-icon-item">
+                                    <a href="#" className="social-icon-link bi-twitter" />
+                                </li>
+                                <li className="social-icon-item">
+                                    <a href="#" className="social-icon-link bi-facebook" />
+                                </li>
+                                <li className="social-icon-item">
+                                    <a href="#" className="social-icon-link bi-instagram" />
+                                </li>
+                                <li className="social-icon-item">
+                                    <a href="#" className="social-icon-link bi-youtube" />
+                                </li>
+                                <li className="social-icon-item">
+                                    <a href="#" className="social-icon-link bi-whatsapp" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <nav className="navbar navbar-expand-lg bg-light shadow-lg">
+                <div className="container">
+                    <a className="navbar-brand" href="index.html">
+                        <img src="images/logo.png" className="logo img-fluid" alt="Kind Heart Charity" />
+                        <span>
+                            FoodGenix
+                            <small>Leftover food management and donation</small>
+                        </span>
+                    </a>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon" />
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav ms-auto">
+                            <li className="nav-item">
+                                <a className="nav-link " href="/">Home</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link click-scroll" href="#section_2">About</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link click-scroll" href="#section_3">Causes</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link click-scroll" href="#section_4">Volunteer</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/registration">Registration</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/registeredOrg">Registered organizations</a>
+                            </li>
+
+                            <li className="nav-item">
+                                <a className="nav-link click-scroll" href="#section_6">Contact</a>
+                            </li>
+                            <li className="nav-item ms-3">
+                                <a className="nav-link custom-btn custom-border-btn btn" href="/liveDonation">Live Donate</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12 col-12 text-center mb-4">
@@ -26,21 +106,15 @@ const RegisteredOrg = () => {
                                     <img src={user.image} />
                                     <div className="custom-block">
                                         <div className="custom-block-body">
-                                            <h5 className="mb-3">{user.organizationName}</h5>
-                                            <p>{user.address}</p>
-                                            {/* <div className="progress mt-4">
-                                                <div className="progress-bar w-75" role="progressbar" aria-valuenow={75} aria-valuemin={0} aria-valuemax={100} />
-                                            </div> */}
+                                            <h5 className="mb-3">{user.org_name
+                                            }</h5>
+                                            <p>{user.org_address}</p>
+
                                             <div className="d-flex align-items-center my-2">
                                                 <p className="mb-0">
                                                     <strong>Phone :</strong>
-                                                    {user.phone}
+                                                    {user.org_phone}
                                                 </p>
-                                                {/* <p className="ms-auto mb-0">
-                                                    <strong>Goal: </strong>
-                                                    Books/stationer: 700 students
-
-                                                </p> */}
                                             </div>
                                         </div>
                                         <a href="/mu" className="custom-btn btn">Contact now</a>
@@ -53,57 +127,6 @@ const RegisteredOrg = () => {
 
                         ))
                     }
-
-                    {/* <div className="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-                        <div className="custom-block-wrap">
-                            <img src="images/causes/poor-child-landfill-looks-forward-with-hope.jpg" className="custom-block-image img-fluid" alt="" />
-                            <div className="custom-block">
-                                <div className="custom-block-body">
-                                    <h5 className="mb-3">Clothes Donation</h5>
-                                    <p>Sed leo nisl, posuere at molestie ac, suscipit auctor mauris. Etiam quis metus tempor</p>
-                                    <div className="progress mt-4">
-                                        <div className="progress-bar w-50" role="progressbar" aria-valuenow={50} aria-valuemin={0} aria-valuemax={100} />
-                                    </div>
-                                    <div className="d-flex align-items-center my-2">
-                                        <p className="mb-0">
-                                            <strong>Donors: </strong>
-                                            6
-                                        </p>
-                                        <p className="ms-auto mb-0">
-                                            <strong>Goal: </strong>
-                                            Clothes for 5000 people
-                                        </p>
-                                    </div>
-                                </div>
-                                <a href="/clothesdonation" className="custom-btn btn">Donate now</a>
-                            </div>
-                        </div>
-                    </div> */}
-                    {/* <div className="col-lg-4 col-md-6 col-12">
-                        <div className="custom-block-wrap">
-                            <img src="images/causes/african-woman-pouring-water-recipient-outdoors.jpg" className="custom-block-image img-fluid" alt="" />
-                            <div className="custom-block">
-                                <div className="custom-block-body">
-                                    <h5 className="mb-3">Supply drinking water</h5>
-                                    <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus</p>
-                                    <div className="progress mt-4">
-                                        <div className="progress-bar w-100" role="progressbar" aria-valuenow={100} aria-valuemin={0} aria-valuemax={100} />
-                                    </div>
-                                    <div className="d-flex align-items-center my-2">
-                                        <p className="mb-0">
-                                            <strong>Raised:</strong>
-                                            $84,600
-                                        </p>
-                                        <p className="ms-auto mb-0">
-                                            <strong>Goal:</strong>
-                                            $100,000
-                                        </p>
-                                    </div>
-                                </div>
-                                <a href="donate.html" className="custom-btn btn">Donate now</a>
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
 
             </div>

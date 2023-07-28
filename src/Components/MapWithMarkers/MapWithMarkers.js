@@ -257,7 +257,7 @@ const MapWithMarkers = () => {
                                         {showDonateInput && (
                                             <div>
                                                 <label className='lead lead text-success m-1 font-weight-bold font-italic' htmlFor="donateInput">Enter your phone number for donation:</label>
-                                                <input className='form-control'
+                                                <input className='form-control mb-2'
                                                     type="text"
                                                     id="donateInput"
                                                     value={donateInputNumber}
@@ -270,7 +270,7 @@ const MapWithMarkers = () => {
                                             <div>
                                                 <label className=' font-italic font-weight-bold lead text-success m-1' htmlFor="foodInput">Enter your phone number for food request:</label>
                                                 <input
-                                                    className='form-control'
+                                                    className='form-control mb-2'
                                                     type="text"
                                                     id="foodInput"
                                                     value={foodInputNumber}

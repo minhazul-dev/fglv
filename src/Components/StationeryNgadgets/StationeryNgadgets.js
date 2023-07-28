@@ -105,7 +105,7 @@ const StationeryNgadgets = () => {
             <nav className="navbar navbar-expand-lg bg-light shadow-lg">
                 <div className="container">
                     <a className="navbar-brand" href="index.html">
-                        <img src="images/logo.png" className="logo img-fluid" alt="" />
+                        <img src="images/logo.png" className="logo img-fluid" alt="Kind Heart Charity" />
                         <span>
                             FoodGenix
                             <small>Leftover food management and donation</small>
@@ -117,29 +117,29 @@ const StationeryNgadgets = () => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item">
-                                <a className="nav-link click-scroll" href="index.html#section_1">Home</a>
+                                <a className="nav-link " href="/">Home</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link click-scroll" href="index.html#section_2">About</a>
+                                <a className="nav-link click-scroll" href="#section_2">About</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link click-scroll" href="index.html#section_3">Causes</a>
+                                <a className="nav-link click-scroll" href="#section_3">Causes</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link click-scroll" href="index.html#section_4">Volunteer</a>
-                            </li>
-                            <li className="nav-item dropdown">
-                                <a className="nav-link click-scroll dropdown-toggle" href="index.html#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">News</a>
-                                <ul className="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                    <li><a className="dropdown-item" href="news.html">News Listing</a></li>
-                                    <li><a className="dropdown-item" href="news-detail.html">News Detail</a></li>
-                                </ul>
+                                <a className="nav-link click-scroll" href="#section_4">Volunteer</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link click-scroll" href="index.html#section_6">Contact</a>
+                                <a className="nav-link" href="/registration">Registration</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/registeredOrg">Registered organizations</a>
+                            </li>
+
+                            <li className="nav-item">
+                                <a className="nav-link click-scroll" href="#section_6">Contact</a>
                             </li>
                             <li className="nav-item ms-3">
-                                <a className="nav-link custom-btn custom-border-btn btn" href="donate.html">Donate</a>
+                                <a className="nav-link custom-btn custom-border-btn btn" href="/liveDonation">Live Donate</a>
                             </li>
                         </ul>
                     </div>

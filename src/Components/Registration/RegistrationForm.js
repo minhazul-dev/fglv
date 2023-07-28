@@ -1,235 +1,273 @@
-import React, { useContext, useState } from 'react';
-import Swal from 'sweetalert2'
-// import './RegistrationForm.css';
-// import fbg from '../assests/form bg/undraw_Mobile_application_mr4r.png'
-// import fb from '../assests/icons/facebook.png'
-// import ins from '../assests/icons/instagram.png'
-// import yt from '../assests/icons/youtube.png'
-// import ln from '../assests/icons/linkedin.png'
-// import gm from '../assests/icons/gmail.png'
-import { AuthContext } from './Context/AuthProvider/AuthProvider';
+// import React from 'react';
+
+// const RegistrationForm = () => {
+//   return (
+//     <div>
+
+//     </div>
+//   );
+// };
+
+// export default RegistrationForm;
+// // 
+import React, { useState } from 'react';
 import axios from 'axios';
-// import wave from '../assests/login form/log.svg'
-const LoginForm = () => {
-  const { createUser, loading, updateUser, user } = useContext(AuthContext)
+const RegistrationForm = () => {
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const [donation, setDonation] = useState({
+    org_name: '',
+    org_email: '',
+    org_phone: '',
+    org_address: '',
+    org_pass: '',
 
 
-  const [signUpError, setSignUpError] = useState("");
-  const [createdUserEmail, setCreatedUserEmail] = useState("");
-  const [imageURL, setImageURL] = useState(null)
+    image: null,
+  });
 
-  const handleRegister = (event) => {
-
-    event.preventDefault();
-    const form = event.target;
-    const organizationName = form.Organization_Name.value;
-    console.log(organizationName)
-    const email = form.email.value;
-    // console.log(email)
-    const phone = form.contactNumber.value;
-    // console.log(email)
-    const password = form.password.value;
-    const address = form.address.value;
-    const image = imageURL;
-    console.log(image)
-    createUser(email, password)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-        if (loading) {
-          return;
-        }
-        const userInfo = {
-          organizationName,
-          phone,
-          address,
-          password,
-          email,
-          image
-        };
-        updateUser(userInfo).then(() => {
-          saveUser(email, organizationName, phone, password, address, image);
-          // navigate(from, { replace: true });
-        });
-
-      })
-      .catch((error) => console.error(error));
-  };
-
-  const saveUser = (email, organizationName, phone, password, address, image) => {
-    const user = { email, organizationName, phone, password, address, image };
-    fetch("http://localhost:9000/users", {
-      method: "POST", // or 'PUT'
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        setCreatedUserEmail(email);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  };
-  const alert = () => {
-    Swal.fire('Registration Completed')
-  }
-  const handleImageUpload = event => {
-    console.log(event.target.files[0]);
+  const handleImageUpload = async (e) => {
     const imageData = new FormData();
-    imageData.set('key', '68ff9082aa166953b8cd94b99c87d9cf');
-    imageData.append('image', event.target.files[0])
+    imageData.append('key', '68ff9082aa166953b8cd94b99c87d9cf');
+    imageData.append('image', e.target.files[0]);
 
-    axios.post('https://api.imgbb.com/1/upload', imageData)
-      .then(function (response) {
-        setImageURL(response.data.data.display_url)
-      })
-      .catch(function (error) {
-        console.log(error);
+    try {
+      const response = await axios.post('https://api.imgbb.com/1/upload', imageData);
+      setDonation((prevDonation) => ({
+        ...prevDonation,
+        image: response.data.data.display_url, // Save the image URL in the state
+      }));
+    } catch (error) {
+      console.error('Error uploading image:', error);
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDonation((prevDonation) => ({
+      ...prevDonation,
+      [name]: value,
+    }));
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post('http://localhost:9000/users', donation);
+      console.log('Donation data saved successfully!');
+      setSuccessMessage('Registration successful');
+      setErrorMessage(''); // Reset error message if any
+      // Reset the form after successful submission
+      setDonation({
+        org_name: '',
+        org_email: '',
+        org_phone: '',
+        org_address: '',
+        org_pass: '',
+        image: null,
       });
-
-  }
+    } catch (error) {
+      console.error('Error saving donation data:', error);
+      setErrorMessage('An error occurred while saving your donation data. Please try again later.');
+      setSuccessMessage(''); // Reset success message if any
+    }
+  };
   return (
-    <section>
-      <div className="fixed-top">
-        <header>
+    <div>
+      <header className="site-header">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-8 col-12 d-flex flex-wrap">
+              <p className="d-flex me-4 mb-0">
+                <i className="bi-geo-alt me-2" />
+                20, 0150 Dhaka, Bangladesh
+              </p>
+              <p className="d-flex mb-0">
+                <i className="bi-envelope me-2" />
+                <a href="mailto:info@company.com">
+                  foodgenix6@gmail.com
+                </a>
+              </p>
+            </div>
+            <div className="col-lg-3 col-12 ms-auto d-lg-block d-none">
+              <ul className="social-icon">
+                <li className="social-icon-item">
+                  <a href="#" className="social-icon-link bi-twitter" />
+                </li>
+                <li className="social-icon-item">
+                  <a href="#" className="social-icon-link bi-facebook" />
+                </li>
+                <li className="social-icon-item">
+                  <a href="#" className="social-icon-link bi-instagram" />
+                </li>
+                <li className="social-icon-item">
+                  <a href="#" className="social-icon-link bi-youtube" />
+                </li>
+                <li className="social-icon-item">
+                  <a href="#" className="social-icon-link bi-whatsapp" />
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+      <nav className="navbar navbar-expand-lg bg-light shadow-lg">
+        <div className="container">
+          <a className="navbar-brand" href="index.html">
+            <img src="images/logo.png" className="logo img-fluid" alt="Kind Heart Charity" />
+            <span>
+              FoodGenix
+              <small>Leftover food management and donation</small>
+            </span>
+          </a>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon" />
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <a className="nav-link " href="/">Home</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link click-scroll" href="#section_2">About</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link click-scroll" href="#section_3">Causes</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link click-scroll" href="#section_4">Volunteer</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/registration">Registration</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/registeredOrg">Registered organizations</a>
+              </li>
+
+              <li className="nav-item">
+                <a className="nav-link click-scroll" href="#section_6">Contact</a>
+              </li>
+              <li className="nav-item ms-3">
+                <a className="nav-link custom-btn custom-border-btn btn" href="/liveDonation">Live Donate</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <main>
+        <section className="donate-section">
+          <div className="section-overlay" />
           <div className="container">
-            <nav className="navbar navbar-expand-lg navbar-dark">
-              <a className="navbar-brand" href="#home">FoodGenix</a>
-              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon" />
-              </button>
-              <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav ml-auto">
-                  <li className="nav-item active">
-                    <a className="nav-link" href="/home">Home <span className="sr-only">(current)</span></a>
+            <div className="row">
+              <div className="col-lg-6 col-12 mx-auto">
+                {successMessage && <div className="alert alert-success">{successMessage}</div>}
+                {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
+                <form className="custom-form donate-form" onSubmit={handleSubmit} role="form">
+                  <h3 className="mb-4">Register your organization</h3>
+                  <div className="row">
+                    <div className="col-lg-12 col-12">
+                      <h5 className="mt-1">Information</h5>
+                    </div>
+                    <div className="col-lg-6 col-12 mt-2">
+
+                      <input type="text" id="org_name" name="org_name" className="form-control" placeholder="Name" value={donation.org_name} onChange={handleChange} required />
+                    </div>
+                    <div className="col-lg-6 col-12 mt-2">
+                      <input type="text" id="org_email" name="org_email" className="form-control" placeholder="Email" value={donation.org_email} onChange={handleChange} required />
+                    </div>
+                    <div className="col-lg-6 col-12 mt-2">
+                      <input type="text" id="org_phone" name="org_phone" className="form-control" placeholder="Phone" value={donation.org_phone} onChange={handleChange} required />
+                    </div>
+                    <div className="col-lg-6 col-12 mt-2">
+                      <input type="text" id="org_address" name="org_address" className="form-control" placeholder="Address" value={donation.org_address} onChange={handleChange} required />
+                    </div>
+                    <div className="col-lg-6 col-12 mt-2">
+                      <input type="password" id="org_pass" name="org_pass" className="form-control" placeholder="Password" value={donation.org_pass} onChange={handleChange} required />
+                    </div>
+
+                    <div className="col-lg-6 col-12 mt-2">
+                      <input type="file" id="image" name="image" accept="/image" className=" form-control" placeholder="PickUp time" onChange={handleImageUpload} required />
+                    </div>
+                    <div className="col-lg-12 col-12 mt-2">
+                      <button type="submit" className="form-control mt-4">Submit Details</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer className="site-footer">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-3 col-12 mb-4">
+              <img src="images/logo.png" className="logo img-fluid" alt="" />
+            </div>
+            <div className="col-lg-4 col-md-6 col-12 mb-4">
+              <h5 className="site-footer-title mb-3">Quick Links</h5>
+              <ul className="footer-menu">
+                <li className="footer-menu-item"><a href="#" className="footer-menu-link">Our Story</a></li>
+                <li className="footer-menu-item"><a href="#" className="footer-menu-link">Newsroom</a></li>
+                <li className="footer-menu-item"><a href="#" className="footer-menu-link">Causes</a></li>
+                <li className="footer-menu-item"><a href="#" className="footer-menu-link">Become a volunteer</a></li>
+                <li className="footer-menu-item"><a href="#" className="footer-menu-link">Partner with us</a></li>
+              </ul>
+            </div>
+            <div className="col-lg-4 col-md-6 col-12 mx-auto">
+              <h5 className="site-footer-title mb-3">Contact Infomation</h5>
+              <p className="text-white d-flex mb-2">
+                <i className="bi-telephone me-2" />
+                <a href="tel: 120-240-9600" className="site-footer-link">
+                  120-240-9600
+                </a>
+              </p>
+              <p className="text-white d-flex">
+                <i className="bi-envelope me-2" />
+                <a href="mailto:donate@charity.org" className="site-footer-link">
+                  donate@charity.org
+                </a>
+              </p>
+              <p className="text-white d-flex mt-3">
+                <i className="bi-geo-alt me-2" />
+                Akershusstranda 20, 0150 Oslo, Norway
+              </p>
+              <a href="#" className="custom-btn btn mt-3">Get Direction</a>
+            </div>
+          </div>
+        </div>
+        <div className="site-footer-bottom">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-6 col-md-7 col-12">
+                <p className="copyright-text mb-0">Copyright © 2036 <a href="#">Kind Heart</a> Charity Org.
+                  Design: <a href="https://templatemo.com" target="_blank">TemplateMo</a></p>
+              </div>
+              <div className="col-lg-6 col-md-5 col-12 d-flex justify-content-center align-items-center mx-auto">
+                <ul className="social-icon">
+                  <li className="social-icon-item">
+                    <a href="#" className="social-icon-link bi-twitter" />
                   </li>
-                  <li className="nav-item active">
-                    <a className="nav-link" href="/donateNow"> Donate Now <span className="sr-only">(current)</span></a>
+                  <li className="social-icon-item">
+                    <a href="#" className="social-icon-link bi-facebook" />
                   </li>
-                  <li className="nav-item active">
-                    <a className="nav-link" href="/registration"> Register <span className="sr-only">(current)</span></a>
+                  <li className="social-icon-item">
+                    <a href="#" className="social-icon-link bi-instagram" />
                   </li>
-                  <li className="nav-item active">
-                    <a className="nav-link" href="/registeredOrganizations"> Organizations <span className="sr-only">(current)</span></a>
+                  <li className="social-icon-item">
+                    <a href="#" className="social-icon-link bi-linkedin" />
                   </li>
-                  {/* <li className="nav-item">
-                      <a className="nav-link" href="#mission-id">Miss</a>
-                    </li> */}
-                  <li className="nav-item">
-                    <a className="nav-link" href="#about">About</a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="#contact">Contact</a>
+                  <li className="social-icon-item">
+                    <a href="https://youtube.com/templatemo" className="social-icon-link bi-youtube" />
                   </li>
                 </ul>
               </div>
-            </nav>
-          </div>
-        </header>
-        <div className="cont-sec">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-6">
-                <p>Contact No : <a href="tel: +9198659****59">+880- 130311311</a></p>
-              </div>
-              <div className="col-lg-6">
-                {/* <div className="social">
-                  <a href="#"><img src={fb} alt="facebook" /></a>
-                  <a href="#"><img src={ins} alt="inatagram" /></a>
-                  <a href="#"><img src={yt} alt="youtube" /></a>
-                  <a href="#"><img src={ln} alt="linkedin" /></a>
-                  <a href="#"><img src={gm} alt="gmail" /></a>
-                </div> */}
-              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
-        <div className="card card0 border-0">
-          <div className="row d-flex">
-            <div className="col-lg-6">
-              <div className="card1 pb-5">
-                <div className="row">
-                  {/* <img src="https://i.imgur.com/CXQmsmF.png" className="logo" /> */}
-                </div>
-                <div className="row px-3 justify-content-center mt-4 mb-5 border-line">
-                  {/* <img src={fbg} className="image" /> */}
-                </div>
-              </div>
-            </div>
-            <form className="col-lg-6" onSubmit={handleRegister}>
-              <div className="card2 card border-0 px-4 py-5">
-                {/* <div className="row mb-4 px-3">
-                  <h6 className="mb-0 mr-4 mt-2">Sign in with</h6>
-                  <div className="facebook text-center mr-3"><div className="fa fa-facebook" /></div>
-                  <div className="twitter text-center mr-3"><div className="fa fa-twitter" /></div>
-                  <div className="linkedin text-center mr-3"><div className="fa fa-linkedin" /></div>
-                </div> */}
-                <div className="row px-3 mb-4">
-                  <div className="line" />
-                  {/* <small className="or text-center">Or</small> */}
-                  <div className="line" />
-                </div>
-                <div className="row px-3">
-                  <label className="mb-1"><h6 className="mb-0 text-sm">Email Address</h6></label>
-                  <input className="mb-4" type="text" name="email" placeholder="Enter a valid email address" />
-                </div>
-                <div className="row px-3">
-                  <label className="mb-1"><h6 className="mb-0 text-sm">Organization Name</h6></label>
-                  <input type="text" name="Organization_Name" placeholder="Organization Name" />
-                </div>
-                <div className="row px-3">
-                  <label className="mb-1"><h6 className="mb-0 text-sm">Contact No</h6></label>
-                  <input type="text" name="contactNumber" placeholder="cell number" />
-                </div>
-                <div className="row px-3">
-                  <label className="mb-1"><h6 className="mb-0 text-sm">Address</h6></label>
-                  <input type="text" name="address" placeholder="Address" />
-                </div>
-                <div className="row px-3">
-                  <label className="mb-1"><h6 className="mb-0 text-sm">Password</h6></label>
-                  <input type="text" name="password" placeholder="Address" />
-                </div>
-                <div className="row px-3" onChange={handleImageUpload}>
-                  <label className="mb-1"><h6 className="mb-0 text-sm">Image</h6></label>
-                  <input type="file" name="organization_Image" placeholder="upload" />
-                </div>
-                {/* <div className="row px-3 mb-4">
-                  <div className="custom-control custom-checkbox custom-control-inline">
-                    <input id="chk1" type="checkbox" name="chk" className="custom-control-input" /> 
-                    <label htmlFor="chk1" className="custom-control-label text-sm">Remember me</label>
-                  </div>
-                  <a href="#" className="ml-auto mb-0 text-sm">Forgot Password?</a>
-                </div> */}
-                <div className="row mb-3 px-3">
-                  <button onClick={alert} type="submit" className="btn btn-blue text-center">Register</button>
-                </div>
-                <div className="row mb-4 px-3">
-                  {/* <small className="font-weight-bold">Don't have an account? <a className="text-danger ">Register</a></small> */}
-                </div>
-              </div>
-            </form>
-          </div>
-          <div className="bg-blue py-4">
-            <div className="row px-3">
-              <small className="ml-4 ml-sm-5 mb-2">Copyright © 2019. All rights reserved.</small>
-              <div className="social-contact ml-4 ml-sm-auto">
-                {/* <span className="fa fa-facebook mr-4 text-sm" />
-                <span className="fa fa-google-plus mr-4 text-sm" />
-                <span className="fa fa-linkedin mr-4 text-sm" />
-                <span className="fa fa-twitter mr-4 mr-sm-5 text-sm" /> */}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+      </footer>
+    </div>
   );
 };
 
-export default LoginForm;
+export default RegistrationForm;
