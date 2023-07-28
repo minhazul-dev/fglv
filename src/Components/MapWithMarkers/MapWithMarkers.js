@@ -152,7 +152,7 @@ const MapWithMarkers = () => {
                 phoneNumber: donateInputNumber,
             };
             // Here, you should send the donationData to your backend API endpoint to save it in the MongoDB donate collection
-            axios.post('http://localhost:9000/liveFoodDonate', donationData)
+            axios.post('https://foodgenix01.onrender.com/liveFoodDonate', donationData)
                 .then((response) => {
                     console.log('Donation data saved successfully:', response.data);
                     setShowSuccessModal(true);
@@ -176,7 +176,7 @@ const MapWithMarkers = () => {
                 phoneNumber: foodInputNumber,
             };
             // Here, you should send the requestData to your backend API endpoint to save it in the MongoDB request collection
-            axios.post('http://localhost:9000/liveFoodRequest', requestData)
+            axios.post('https://foodgenix01.onrender.com/liveFoodRequest', requestData)
                 .then((response) => {
                     console.log('Food request data saved successfully:', response.data);
                     setShowSuccessModal(true);
