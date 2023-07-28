@@ -28,7 +28,7 @@ export default function CheckoutForm() {
         };
         console.log(amountDetails);
 
-        fetch('http://localhost:9000/addPayment', {
+        fetch('https://foodgenix01.onrender.com/addPayment', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(amountDetails)

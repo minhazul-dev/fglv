@@ -24,7 +24,7 @@ const GetInTouchForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:9000/getInTouch', getInTouchmsg);
+            await axios.post('https://foodgenix01.onrender.com/getInTouch', getInTouchmsg);
             console.log('Donation data saved successfully!');
             setSuccessMessage('Message sent! Our Team will Contact With You Soon.');
             setErrorMessage(''); // Reset error message if any

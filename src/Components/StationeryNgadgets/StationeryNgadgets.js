@@ -42,7 +42,7 @@ const StationeryNgadgets = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:9000/multiCategory', donation);
+            await axios.post('https://foodgenix01.onrender.com/multiCategory', donation);
             console.log('Donation data saved successfully!');
             setSuccessMessage('Thank you for your donation! Our Team will Contact With You Soon.');
             setErrorMessage(''); // Reset error message if any

@@ -4,7 +4,7 @@ const RegisteredOrg = () => {
 
     const [users, setUsers] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:9000/users")
+        fetch("https://foodgenix01.onrender.com/users")
             .then(res => res.json())
             .then(data => setUsers(data))
         // .then(data => console.log(data))

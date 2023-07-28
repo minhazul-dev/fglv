@@ -1,15 +1,4 @@
-// import React from 'react';
 
-// const RegistrationForm = () => {
-//   return (
-//     <div>
-
-//     </div>
-//   );
-// };
-
-// export default RegistrationForm;
-// // 
 import React, { useState } from 'react';
 import axios from 'axios';
 const RegistrationForm = () => {

@@ -27,7 +27,7 @@ const VolunteerForm = () => {
         e.preventDefault();
 
         try {
-            await axios.post('http://localhost:9000/addVolunteer', volunteer);
+            await axios.post('https://foodgenix01.onrender.com/addVolunteer', volunteer);
             console.log('Donation data saved successfully!');
             setSuccessMessage('Applied successfully! Our Team will Contact With You Soon.');
             setErrorMessage(''); // Reset error message if any
