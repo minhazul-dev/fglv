@@ -154,7 +154,7 @@ const StationeryNgadgets = () => {
                                 {successMessage && <div className="alert alert-success">{successMessage}</div>}
                                 {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
                                 <form className="custom-form donate-form" onSubmit={handleSubmit} role="form">
-                                    <h3 className="mb-4">Make Donation</h3>
+                                    <h2 className="mb-4">Make Donation</h2>
                                     <div className="row">
                                         <div className="col-lg-12 col-12">
                                             <h5 className="mt-1">Information</h5>
