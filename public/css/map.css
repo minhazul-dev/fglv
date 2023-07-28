@@ -1,0 +1,14 @@
+/* map.css */
+
+/* Adjust the height of the map container */
+.map-container {
+    height: 700px;
+
+    border: 5px red;
+}
+
+/* Set a fixed width for the map container */
+.map-container {
+    width: 100%;
+
+}
