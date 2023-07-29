@@ -11,6 +11,7 @@ import Volunteers from "./Components/Admin/Pages/Volunteers/Volunteer";
 import StationeryNgadgets from "./Components/StationeryNgadgets/StationeryNgadgets";
 import RegisteredOrg from "./Components/RegisteredOrganizations/RegisteredOrg";
 import Registration from "./Components/Registration/RegistrationForm";
+import MostFrequentVolunteerArea from "./Components/MostFrequentLocation/MostFrequentLocation";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/adminVolunteer" element={<Volunteers />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/registeredOrg" element={<RegisteredOrg />} />
+          <Route path="/mostFrequentDonationArea" element={<MostFrequentVolunteerArea />} />
 
 
         </Routes>
