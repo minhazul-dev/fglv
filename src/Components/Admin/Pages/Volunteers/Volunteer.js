@@ -33,7 +33,7 @@ const Volunteer = () => {
     <div>
       <div className="container-scroller">
         {/* partial:../../partials/_navbar.html */}
-        <nav className="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        {/* <nav className="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
           <div className="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
             <a className="navbar-brand brand-logo me-5" href="../../index.html"><img src="../../images/logo.svg" className="me-2" alt="logo" /></a>
             <a className="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../images/logo-mini.svg" alt="logo" /></a>
@@ -167,7 +167,7 @@ const Volunteer = () => {
               <span className="ti-view-list" />
             </button>
           </div>
-        </nav>
+        </nav> */}
         {/* partial */}
         <div className="container-fluid page-body-wrapper">
           {/* partial:../../partials/_sidebar.html */}
@@ -276,7 +276,7 @@ const Volunteer = () => {
                       <div className="mb-3">
                         <input
                           type="text"
-                          className="form-control  text-white"
+                          className="form-control  lead "
                           placeholder="Search by Area"
                           value={search}
                           onChange={handleSearchChange}

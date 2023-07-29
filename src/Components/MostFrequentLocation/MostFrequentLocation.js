@@ -7,7 +7,7 @@ const MostFrequentVolunteerArea = () => {
     useEffect(() => {
         const fetchMostFrequentArea = async () => {
             try {
-                const response = await axios.get('http://localhost:9000/most-frequent-donation-area');
+                const response = await axios.get('https://foodgenix01.onrender.com/most-frequent-donation-area');
                 if (response.data && response.data._id) {
                     setMostFrequentArea(response.data._id);
                 } else {

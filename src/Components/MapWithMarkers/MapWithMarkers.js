@@ -89,7 +89,11 @@ const MapWithMarkers = () => {
             { id: 13, position: [23.7607, 90.3912], name: 'Organization_7', hotline: '01998887654' },
             { id: 14, position: [23.7553, 90.3940], name: 'Organization_8', hotline: '01674562345' },
             { id: 15, position: [23.7618, 90.3925], name: 'Organization_9', hotline: '01760981234' },
-            { id: 16, position: [23.7570, 90.3889], name: 'Organization_10', hotline: '01883335555' }
+            { id: 16, position: [23.7570, 90.3889], name: 'Organization_10', hotline: '01883335555' },
+            { id: 17, position: [23.8432, 90.2541], name: 'Organization11', hotline: '01698765432' },
+            { id: 18, position: [23.8387, 90.2698], name: 'Organization12', hotline: '01765432109' },
+            { id: 19, position: [23.8345, 90.2483], name: 'Organization13', hotline: '01876543210' },
+            { id: 20, position: [23.8399, 90.2416], name: 'Organization14', hotline: '01987654321' }
 
 
 
