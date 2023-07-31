@@ -1,0 +1,52 @@
+[
+  {
+    "city": "Dhaka",
+    "admin": "Agency for Integrated Development",
+    "area": "Savar",
+    "address": "10 Tarapur, Savar, Dhaka.",
+    "hotline": "7743145",
+    "lat": "23.8382",
+    "lng": "90.2604",
+    "country": "Bangladesh"
+  },
+  {
+    "city": "Dhaka",
+    "admin": "Association for Socio Economic and Human Upliftment (ASHU)",
+    "area": "savar",
+    "address": "Moni Villa, B-2/1, East Rajshon",
+    "hotline": "01857-623324",
+    "lat": "23.9396",
+    "lng": "90.2772",
+    "country": "Bangladesh"
+  },
+  {
+    "city": "Dhaka",
+    "admin": "Bangladesh Youth First Concerns (BYFC)",
+    "area": "savar",
+    "address": "B-8/9 East Bhobanipur, Ghenda",
+    "hotline": "7742036,",
+    "lat": "23.8342",
+    "lng": "90.2607",
+    "country": "Bangladesh"
+  },
+  {
+    "city": "Dhaka",
+    "admin": "Dipti Foundation",
+    "area": "savar",
+    "address": "House-15, Block-B, Main Road, Ward-02, Khagon, Biluria Road",
+    "hotline": "01713-042814",
+    "lat": "23.8730",
+    "lng": "90.3113",
+    "country": "Bangladesh"
+  },
+  {
+    "city": "Dhaka",
+    "admin": "ASHOKA : Innovators for the Public",
+    "area": "Dhanmondi",
+    "address": "House-19/1, (2nd floor), R- 15(New), 28(Old), Dhanmondi R/A",
+    "hotline": "01713-042814",
+    "lat": "23.77786",
+    "lng": "90.373188",
+    "country": "Bangladesh"
+  }
+]

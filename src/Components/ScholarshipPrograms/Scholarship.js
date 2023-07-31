@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-const StationeryNgadgets = () => {
+
+const Scholarship = () => {
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
     const [donation, setDonation] = useState({
-        donation_name: '',
-        donation_email: '',
+        apply_name: '',
+        apply_email: '',
         donation_phone: '',
-        donation_address: '',
-        donation_category: '',
-        pickup_date: '',
-        pickup_time: '',
-
+        apply_area: '',
+        apply_education: '',
+        apply_applyFor: '',
         image: null,
     });
 
@@ -42,19 +41,18 @@ const StationeryNgadgets = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('https://foodgenix01.onrender.com/multiCategory', donation);
+            await axios.post('https://foodgenix01.onrender.com/scholarshipProgram', donation);
             console.log('Donation data saved successfully!');
-            setSuccessMessage('Thank you for your donation! Our Team will Contact With You Soon.');
+            setSuccessMessage('Thank you for your Application! Our Team will Contact With You Soon.');
             setErrorMessage(''); // Reset error message if any
             // Reset the form after successful submission
             setDonation({
-                donation_name: '',
-                donation_email: '',
+                apply_name: '',
+                apply_email: '',
                 donation_phone: '',
-                donation_address: '',
-                donation_category: '',
-                pickup_date: '',
-                pickup_time: '',
+                apply_area: '0',
+                apply_education: '',
+                apply_applyFor: '',
                 image: null,
             });
         } catch (error) {
@@ -63,6 +61,7 @@ const StationeryNgadgets = () => {
             setSuccessMessage(''); // Reset success message if any
         }
     };
+
     return (
         <div>
             <header className="site-header">
@@ -105,7 +104,7 @@ const StationeryNgadgets = () => {
             <nav className="navbar navbar-expand-lg bg-light shadow-lg">
                 <div className="container">
                     <a className="navbar-brand" href="index.html">
-                        <img src="images/logo.png" className="logo img-fluid" alt="Kind Heart Charity" />
+                        <img src="images/logo.png" className="logo img-fluid" alt="" />
                         <span>
                             FoodGenix
                             <small>Leftover food management and donation</small>
@@ -117,29 +116,29 @@ const StationeryNgadgets = () => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item">
-                                <a className="nav-link " href="/">Home</a>
+                                <a className="nav-link click-scroll" href="index.html#section_1">Home</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link click-scroll" href="#section_2">About</a>
+                                <a className="nav-link click-scroll" href="index.html#section_2">About</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link click-scroll" href="#section_3">Causes</a>
+                                <a className="nav-link click-scroll" href="index.html#section_3">Causes</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link click-scroll" href="#section_4">Volunteer</a>
+                                <a className="nav-link click-scroll" href="index.html#section_4">Volunteer</a>
+                            </li>
+                            <li className="nav-item dropdown">
+                                <a className="nav-link click-scroll dropdown-toggle" href="index.html#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">News</a>
+                                <ul className="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                    <li><a className="dropdown-item" href="news.html">News Listing</a></li>
+                                    <li><a className="dropdown-item" href="news-detail.html">News Detail</a></li>
+                                </ul>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/registration">Registration</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="/registeredOrg">Registered organizations</a>
-                            </li>
-
-                            <li className="nav-item">
-                                <a className="nav-link click-scroll" href="#section_6">Contact</a>
+                                <a className="nav-link click-scroll" href="index.html#section_6">Contact</a>
                             </li>
                             <li className="nav-item ms-3">
-                                <a className="nav-link custom-btn custom-border-btn btn" href="/liveDonation">Live Donate</a>
+                                <a className="nav-link custom-btn custom-border-btn btn" href="donate.html">Donate</a>
                             </li>
                         </ul>
                     </div>
@@ -154,38 +153,35 @@ const StationeryNgadgets = () => {
                                 {successMessage && <div className="alert alert-success">{successMessage}</div>}
                                 {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
                                 <form className="custom-form donate-form" onSubmit={handleSubmit} role="form">
-                                    <h2 className="mb-4">Make Donation</h2>
+                                    <h3 className="mb-4">Appply for a scholarship</h3>
                                     <div className="row">
                                         <div className="col-lg-12 col-12">
                                             <h5 className="mt-1">Information</h5>
                                         </div>
                                         <div className="col-lg-6 col-12 mt-2">
 
-                                            <input type="text" id="donation_name" name="donation_name" className="form-control" placeholder="Name" value={donation.donation_name} onChange={handleChange} required />
+                                            <input type="text" id="apply_name" name="apply_name" className="form-control" placeholder="Name" value={donation.apply_name} onChange={handleChange} required />
                                         </div>
                                         <div className="col-lg-6 col-12 mt-2">
-                                            <input type="text" id="donation_email" name="donation_email" className="form-control" placeholder="Email" value={donation.donation_email} onChange={handleChange} required />
+                                            <input type="text" id="apply_email" name="apply_email" className="form-control" placeholder="Email" value={donation.apply_email} onChange={handleChange} required />
                                         </div>
                                         <div className="col-lg-6 col-12 mt-2">
                                             <input type="text" id="donation_phone" name="donation_phone" className="form-control" placeholder="Phone" value={donation.donation_phone} onChange={handleChange} required />
                                         </div>
                                         <div className="col-lg-6 col-12 mt-2">
-                                            <input type="text" id="donation_address" name="donation_address" className="form-control" placeholder="Address" value={donation.donation_address} onChange={handleChange} required />
+                                            <input type="text" id="apply_area" name="apply_area" className="form-control" placeholder="Address" value={donation.apply_area} onChange={handleChange} required />
                                         </div>
                                         <div className="col-lg-6 col-12 mt-2">
-                                            <input type="text" id="donation_category" name="donation_category" className="form-control" placeholder="Books/stationery/gadgets" value={donation.donation_category} onChange={handleChange} required />
+                                            <input type="text" id="pickup_date" name="pickup_date" className="form-control" placeholder="Last Education Qualification" value={donation.pickup_date} onChange={handleChange} required />
                                         </div>
                                         <div className="col-lg-6 col-12 mt-2">
-                                            <input type="date" id="pickup_date" name="pickup_date" className="form-control" placeholder="PickUp Date" value={donation.pickup_date} onChange={handleChange} required />
+                                            <input type="text" id="apply_applyFor" name="apply_applyFor" className="form-control" placeholder="Applying For? " value={donation.apply_applyFor} onChange={handleChange} required />
                                         </div>
-                                        <div className="col-lg-6 col-12 mt-2">
-                                            <input type="time" id="pickup_time" name="pickup_time" className="form-control" placeholder="PickUp time" value={donation.pickup_time} onChange={handleChange} required />
-                                        </div>
-                                        <div className="col-lg-6 col-12 mt-2">
+                                        {/* <div className="col-lg-6 col-12 mt-2">
                                             <input type="file" id="image" name="image" accept="/image" className=" form-control" placeholder="PickUp time" onChange={handleImageUpload} required />
-                                        </div>
+                                        </div> */}
                                         <div className="col-lg-12 col-12 mt-2">
-                                            <button type="submit" className="form-control mt-4">Submit Donation</button>
+                                            <button type="submit" className="form-control mt-4">Submit Information</button>
                                         </div>
                                     </div>
                                 </form>
@@ -266,4 +262,4 @@ const StationeryNgadgets = () => {
     );
 };
 
-export default StationeryNgadgets;
+export default Scholarship;

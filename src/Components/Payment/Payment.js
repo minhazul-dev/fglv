@@ -4,7 +4,7 @@ import { Elements } from "@stripe/react-stripe-js";
 
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./CheckoutForm/CheckoutForm";
-import { Toast } from "bootstrap";
+
 
 function Payment() {
     const [stripePromise, setStripePromise] = useState(null);

@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Alert, Container, Form, InputGroup, Table } from 'react-bootstrap';
+import { Container, Form, InputGroup, Table } from 'react-bootstrap';
 // import { data } from '../../../components/assests/NgoDataDetails/Data'
 
 
@@ -11,7 +11,7 @@ const Volunteer = () => {
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    fetch("https://foodgenix01.onrender.com/addVolunteer")
+    fetch("http://localhost:9000/addVolunteer")
       .then((response) => response.json())
       .then((data) => {
         setVolunteers(data);
@@ -26,7 +26,7 @@ const Volunteer = () => {
   const filteredVolunteers = volunteers.filter((volunteer) => {
     return (
       search.trim() === '' ||
-      (volunteer.volunteer_area && volunteer.volunteer_area.toLowerCase().includes(search.toLowerCase()))
+      (volunteer.area && volunteer.area.toLowerCase().includes(search.toLowerCase()))
     );
   });
   return (
@@ -350,19 +350,18 @@ const Volunteer = () => {
                                     <p>{user._id}</p>
                                   </td>
                                   <td>
-                                    {user.volunteer_name
-                                    }
+                                    {user.name}
                                   </td>
                                   <td>
                                     <td>
-                                      {user.volunteer_area}
+                                      {user.area}
                                     </td>
                                   </td>
                                   <td>
-                                    {user.volunteer_phone}
+                                    {user.number}
                                   </td>
                                   <td>
-                                    {user.volunteer_message}
+                                    {user.textmsg}
                                   </td>
                                 </tr>
                               ))
@@ -559,7 +558,7 @@ const Volunteer = () => {
                       <div className="mb-3">
                         <input
                           type="text"
-                          className="form-control  text-white"
+                          className="form-control-lg bg-secondary text-white"
                           placeholder="Search by Area"
                           value={search}
                           onChange={handleSearchChange}
@@ -567,7 +566,7 @@ const Volunteer = () => {
                       </div>
                       <div className="table-responsive pt-3">
                         {filteredVolunteers.length === 0 ? (
-                          <Alert variant="danger">No data matches your search.</Alert>
+                          <p>No matching results.</p>
                         ) : (
                           <table className="table table-bordered">
                             <thead>
@@ -581,11 +580,11 @@ const Volunteer = () => {
                             </thead>
                             <tbody>
                               {filteredVolunteers.map((volunteer) => (
-                                <tr key={volunteer.volunteer_name} className='table-info'>
+                                <tr key={volunteer._id} className='table-info'>
                                   <td>{volunteer._id}</td>
-                                  <td>{volunteer.volunteer_name}</td>
-                                  <td>{volunteer.volunteer_phone}</td>
-                                  <td>{volunteer.volunteer_area}</td>
+                                  <td>{volunteer.name}</td>
+                                  <td>{volunteer.number}</td>
+                                  <td>{volunteer.area}</td>
                                   <td>
                                     <a href="#" className="btn btn-primary assign-btn" data-id={volunteer._id}>
                                       Assign Now

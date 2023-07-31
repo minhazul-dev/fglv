@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import "./css/style.css"
+import "./style.css"
 import "./css/maps/style.css.map"
 import "./css/maps/style.css.map"
 import "./fonts/Roboto/Roboto-Black.eot"
@@ -17,7 +17,7 @@ const Admin = () => {
 
     const [organizations, setOrganizations] = useState([]);
     useEffect(() => {
-        fetch("https://foodgenix01.onrender.com/users")
+        fetch("http://localhost:9000/users")
             .then((response) => response.json())
             .then(data => {
                 setOrganizations(data)
@@ -27,7 +27,7 @@ const Admin = () => {
     // volunteers
     const [volunteers, setvolunteers] = useState([]);
     useEffect(() => {
-        fetch("https://foodgenix01.onrender.com/addVolunteer")
+        fetch("http://localhost:9000/addVolunteer")
             .then((response) => response.json())
             .then(data => {
                 setvolunteers(data)
@@ -37,7 +37,7 @@ const Admin = () => {
 
     //paymentdetails
 
-    const url = "https://foodgenix01.onrender.com/addPayment";
+    const url = "http://localhost:9000/addPayment";
     const [paymentData, setpaymentData] = useState([]);
     const [totalSum, setTotalSum] = useState(0);
     useEffect(() => {
@@ -152,7 +152,7 @@ const Admin = () => {
                                 </a>
                             </li> */}
                             <li className="nav-item">
-                                <a className="nav-link" href="/adminVolunteer">
+                                <a className="nav-link" href="/Volunteer">
                                     <i className="ti-view-list-alt menu-icon" />
                                     <span className="menu-title">Volunteers</span>
                                 </a>

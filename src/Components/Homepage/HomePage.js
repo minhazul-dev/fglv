@@ -160,7 +160,7 @@ const HomePage = () => {
                             </div>
                             <div className="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
                                 <div className="featured-block d-flex justify-content-center align-items-center">
-                                    <a href="donate.html" className="d-block">
+                                    <a href="/scholarship" className="d-block">
                                         <img src="images/icons/scholarship.png" className="featured-block-image img-fluid" alt="" />
                                         <p className="featured-block-text"><strong>Scholarship</strong> Program</p>
                                     </a>
@@ -326,23 +326,23 @@ const HomePage = () => {
                                     <img src="images/causes/african-woman-pouring-water-recipient-outdoors.jpg" className="custom-block-image img-fluid" alt="" />
                                     <div className="custom-block">
                                         <div className="custom-block-body">
-                                            <h5 className="mb-3">Supply drinking water</h5>
-                                            <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus</p>
+                                            <h5 className="mb-3">Scholarship Program</h5>
+                                            <p>Apply for scholarship.</p>
                                             <div className="progress mt-4">
-                                                <div className="progress-bar w-100" role="progressbar" aria-valuenow={100} aria-valuemin={0} aria-valuemax={100} />
+                                                <div className="progress-bar w-50" role="progressbar" aria-valuenow={20} aria-valuemin={0} aria-valuemax={100} />
                                             </div>
                                             <div className="d-flex align-items-center my-2">
                                                 <p className="mb-0">
-                                                    <strong>Raised:</strong>
-                                                    $84,600
+                                                    <strong></strong>
+                                                    15
                                                 </p>
                                                 <p className="ms-auto mb-0">
                                                     <strong>Goal:</strong>
-                                                    $100,000
+                                                    Free education
                                                 </p>
                                             </div>
                                         </div>
-                                        <a href="donate.html" className="custom-btn btn">Donate now</a>
+                                        <a href="/scholarship" className="custom-btn btn">Donate now</a>
                                     </div>
                                 </div>
                             </div>

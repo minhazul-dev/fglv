@@ -1,0 +1,22 @@
+.map-container {
+    width: 100%;
+    height: 590px;
+    /* Set an initial height for the map */
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+    .map-container {
+        height: 300px;
+        /* Adjust the height for smaller screens */
+    }
+}
+
+/* Media query for even smaller screens */
+@media screen and (max-width: 480px) {
+    .map-container {
+        height: 200px;
+        /* Adjust the height for even smaller screens */
+    }
+}
+

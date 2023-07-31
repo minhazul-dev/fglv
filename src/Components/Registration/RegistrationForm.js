@@ -1,4 +1,15 @@
+// import React from 'react';
 
+// const RegistrationForm = () => {
+//   return (
+//     <div>
+
+//     </div>
+//   );
+// };
+
+// export default RegistrationForm;
+// // 
 import React, { useState } from 'react';
 import axios from 'axios';
 const RegistrationForm = () => {
@@ -213,13 +224,13 @@ const RegistrationForm = () => {
               </p>
               <p className="text-white d-flex">
                 <i className="bi-envelope me-2" />
-                <a href="mailto:donate@charity.org" className="site-footer-link">
-                  donate@charity.org
+                <a href="mailto:info@yourgmail.com" className="site-footer-link">
+                  foodgenix6@gmail.com
                 </a>
               </p>
               <p className="text-white d-flex mt-3">
                 <i className="bi-geo-alt me-2" />
-                Akershusstranda 20, 0150 Oslo, Norway
+                20, 0150 Dhaka, Bangladesh
               </p>
               <a href="#" className="custom-btn btn mt-3">Get Direction</a>
             </div>
@@ -229,8 +240,8 @@ const RegistrationForm = () => {
           <div className="container">
             <div className="row">
               <div className="col-lg-6 col-md-7 col-12">
-                <p className="copyright-text mb-0">Copyright © 2036 <a href="#">Kind Heart</a> Charity Org.
-                  Design: <a href="https://templatemo.com" target="_blank">TemplateMo</a></p>
+                <p className="copyright-text mb-0">Copyright © 2021 <a href="#">Leftover food management and donation</a> FoodGenix
+                </p>
               </div>
               <div className="col-lg-6 col-md-5 col-12 d-flex justify-content-center align-items-center mx-auto">
                 <ul className="social-icon">

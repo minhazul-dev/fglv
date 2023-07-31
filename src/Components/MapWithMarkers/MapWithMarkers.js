@@ -21,6 +21,8 @@ const MapWithMarkers = () => {
     const [showDonateInput, setShowDonateInput] = useState(false);
     const [showFoodInput, setShowFoodInput] = useState(false);
     const [showSuccessModal, setShowSuccessModal] = useState(false);
+    const [foodInputNumberP, setFoodInputNumberP] = useState('')
+
     const mapRef = useRef();
 
     useEffect(() => {
@@ -69,31 +71,31 @@ const MapWithMarkers = () => {
     useEffect(() => {
         // Simulating additional markers (replace this with your actual data)
         const markersData = [
-            { id: 1, position: [23.8382, 90.2604], name: 'Agency for Integrated Development', hotline: '7743145' },
+            { id: 1, position: [23.8382, 90.2604], name: 'Agency for Integrated Development', hotline: '+8801303119674' },
 
-            { id: 2, position: [23.9396, 90.2772], name: 'Association for Socio Economic and Human Upliftment (ASHU)', hotline: '01857-623324' },
+            { id: 2, position: [23.9396, 90.2772], name: 'Association for Socio Economic and Human Upliftment (ASHU)', hotline: '+8801303119674' },
 
-            { id: 3, position: [23.8342, 90.2607], name: 'Bangladesh Youth First Concerns (BYFC)', hotline: '7742036' },
+            { id: 3, position: [23.8342, 90.2607], name: 'Bangladesh Youth First Concerns (BYFC)', hotline: '+8801303119674' },
 
-            { id: 4, position: [23.8730, 90.3113], name: 'Dipti Foundation', hotline: '01713-042814' },
+            { id: 4, position: [23.8730, 90.3113], name: 'Dipti Foundation', hotline: '+8801303119674' },
 
-            { id: 5, position: [23.77786, 90.373188], name: 'ASHOKA : Innovators for the Public', hotline: '01713-042814' },
+            { id: 5, position: [23.77786, 90.373188], name: 'ASHOKA : Innovators for the Public', hotline: '+8801303119674' },
 
-            { id: 6, position: [23.75016846764646, 90.447779879007], name: 'Faith and Hope Welfare Association', hotline: '01716633005' },
-            { id: 7, position: [23.7744, 90.3729], name: 'Organization_1', hotline: '01716633005' },
-            { id: 8, position: [23.7465, 90.3745], name: 'Organization_2', hotline: '01716633005' },
-            { id: 9, position: [23.7732, 90.3908], name: 'Organization_3', hotline: '01716633005' },
-            { id: 10, position: [23.7579, 90.3904], name: 'Organization_4', hotline: '01716633005' },
-            { id: 11, position: [23.7583, 90.3921], name: 'Organization_5', hotline: '01671234567' },
-            { id: 12, position: [23.7565, 90.3918], name: 'Organization_6', hotline: '01895551234' },
-            { id: 13, position: [23.7607, 90.3912], name: 'Organization_7', hotline: '01998887654' },
-            { id: 14, position: [23.7553, 90.3940], name: 'Organization_8', hotline: '01674562345' },
-            { id: 15, position: [23.7618, 90.3925], name: 'Organization_9', hotline: '01760981234' },
-            { id: 16, position: [23.7570, 90.3889], name: 'Organization_10', hotline: '01883335555' },
-            { id: 17, position: [23.8432, 90.2541], name: 'Organization11', hotline: '01698765432' },
-            { id: 18, position: [23.8387, 90.2698], name: 'Organization12', hotline: '01765432109' },
-            { id: 19, position: [23.8345, 90.2483], name: 'Organization13', hotline: '01876543210' },
-            { id: 20, position: [23.8399, 90.2416], name: 'Organization14', hotline: '01987654321' }
+            { id: 6, position: [23.75016846764646, 90.447779879007], name: 'Faith and Hope Welfare Association', hotline: '+8801303119674' },
+            { id: 7, position: [23.7744, 90.3729], name: 'Organization_1', hotline: '+8801303119674' },
+            { id: 8, position: [23.7465, 90.3745], name: 'Organization_2', hotline: '+8801303119674' },
+            { id: 9, position: [23.7732, 90.3908], name: 'Organization_3', hotline: '+8801303119674' },
+            { id: 10, position: [23.7579, 90.3904], name: 'Organization_4', hotline: '+8801303119674' },
+            { id: 11, position: [23.7583, 90.3921], name: 'Organization_5', hotline: '+8801303119674' },
+            { id: 12, position: [23.8752, 90.3111], name: 'Organization_6', hotline: '+8801303119674' },
+            { id: 13, position: [23.8842, 90.3284], name: 'Organization_7', hotline: '+8801303119674' },
+            { id: 14, position: [23.8788, 90.3367], name: 'Organization_8', hotline: '+8801303119674' },
+            { id: 15, position: [23.8551, 90.3584], name: 'Organization_9', hotline: '+8801303119674' },
+            // { id: 16, position: [23.7570, 90.3889], name: 'Organization_10', hotline: '+8801303119674' },
+            // { id: 17, position: [23.8432, 90.2541], name: 'Organization11', hotline: '+8801303119674' },
+            // { id: 18, position: [23.8387, 90.2698], name: 'Organization12', hotline: '+8801303119674' },
+            // { id: 19, position: [23.8345, 90.2483], name: 'Organization13', hotline: '+8801303119674' },
+            // { id: 20, position: [23.8399, 90.2416], name: 'Organization14', hotline: '+8801303119674' }
 
 
 
@@ -153,45 +155,75 @@ const MapWithMarkers = () => {
         return null;
     };
 
-    //req n donate food
+
     const handleDonateNow = () => {
-        // Save donation data to MongoDB donate collection
-        if (selectedMarker && donateInputNumber.trim() !== '') {
+        if (selectedMarker && donateInputNumber.trim() !== '' && donateInputNumber.trim() !== '') {
             const donationData = {
                 locationName: userLocationName,
                 organizationName: selectedMarker.name,
                 phoneNumber: donateInputNumber,
             };
-            // Here, you should send the donationData to your backend API endpoint to save it in the MongoDB donate collection
+
+            // Save food request data to MongoDB foodRequest collection
             axios.post('https://foodgenix01.onrender.com/liveFoodDonate', donationData)
                 .then((response) => {
-                    console.log('Donation data saved successfully:', response.data);
+                    console.log('Food request data saved successfully:', response.data);
                     setShowSuccessModal(true);
-                    setDonateInputNumber('');
+                    setFoodInputNumber('');
+
+                    // Send the SMS notification to the organization's hotline number
+                    const smsNotification = {
+                        phoneNumber: selectedMarker.hotline,
+                        message: `Thank you for your donation to ${selectedMarker.name}. The Donation is available at ${userLocationName}.Donor Contact ${donateInputNumber}`,
+                    };
+
+                    axios.post('https://foodgenix01.onrender.com/sendSMSNotification', smsNotification)
+                        .then((response) => {
+                            console.log('SMS notification sent successfully:', response.data);
+                        })
+                        .catch((error) => {
+                            console.error('Error sending SMS notification:', error);
+                        });
                 })
                 .catch((error) => {
-                    console.error('Error saving donation data:', error);
-                    alert('Error sending donation data. Please try again later.');
+                    console.error('Error saving food request data:', error);
+                    alert('Error sending food request data. Please try again later.');
                 });
         } else {
             alert('Please enter a valid phone number.');
         }
     };
 
+
     const handleRequestFood = () => {
-        // Save food request data to MongoDB request collection
         if (selectedMarker && foodInputNumber.trim() !== '') {
-            const requestData = {
+            const foodRequestData = {
                 locationName: userLocationName,
                 organizationName: selectedMarker.name,
                 phoneNumber: foodInputNumber,
+                persons: foodInputNumberP,
             };
-            // Here, you should send the requestData to your backend API endpoint to save it in the MongoDB request collection
-            axios.post('https://foodgenix01.onrender.com/liveFoodRequest', requestData)
+
+            // Save food request data to MongoDB foodRequest collection
+            axios.post('https://foodgenix01.onrender.com/liveFoodRequest', foodRequestData)
                 .then((response) => {
                     console.log('Food request data saved successfully:', response.data);
                     setShowSuccessModal(true);
                     setFoodInputNumber('');
+
+                    // Send the SMS notification to the organization's hotline number
+                    const smsNotification = {
+                        phoneNumber: selectedMarker.hotline,
+                        message: `A food request has been made for  ${foodInputNumberP} persons, to  ${selectedMarker.name}. The request is available at ${userLocationName}. Requester Contact: ${foodInputNumber}, `,
+                    };
+
+                    axios.post('https://foodgenix01.onrender.com/sendSMSNotification', smsNotification)
+                        .then((response) => {
+                            console.log('SMS notification sent successfully:', response.data);
+                        })
+                        .catch((error) => {
+                            console.error('Error sending SMS notification:', error);
+                        });
                 })
                 .catch((error) => {
                     console.error('Error saving food request data:', error);
@@ -214,6 +246,86 @@ const MapWithMarkers = () => {
     return (
 
         < section >
+            <header className="site-header">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-8 col-12 d-flex flex-wrap">
+                            <p className="d-flex me-4 mb-0">
+                                <i className="bi-geo-alt me-2" />
+                                20, 0150 Dhaka, Bangladesh
+                            </p>
+                            <p className="d-flex mb-0">
+                                <i className="bi-envelope me-2" />
+                                <a href="mailto:info@company.com">
+                                    foodgenix6@gmail.com
+                                </a>
+                            </p>
+                        </div>
+                        <div className="col-lg-3 col-12 ms-auto d-lg-block d-none">
+                            <ul className="social-icon">
+                                <li className="social-icon-item">
+                                    <a href="#" className="social-icon-link bi-twitter" />
+                                </li>
+                                <li className="social-icon-item">
+                                    <a href="#" className="social-icon-link bi-facebook" />
+                                </li>
+                                <li className="social-icon-item">
+                                    <a href="#" className="social-icon-link bi-instagram" />
+                                </li>
+                                <li className="social-icon-item">
+                                    <a href="#" className="social-icon-link bi-youtube" />
+                                </li>
+                                <li className="social-icon-item">
+                                    <a href="#" className="social-icon-link bi-whatsapp" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <nav className="navbar navbar-expand-lg bg-light shadow-lg">
+                <div className="container">
+                    <a className="navbar-brand" href="index.html">
+                        <img src="images/logo.png" className="logo img-fluid" alt="" />
+                        <span>
+                            FoodGenix
+                            <small>Leftover food management and donation</small>
+                        </span>
+                    </a>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon" />
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav ms-auto">
+                            <li className="nav-item">
+                                <a className="nav-link click-scroll" href="index.html#section_1">Home</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link click-scroll" href="index.html#section_2">About</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link click-scroll" href="index.html#section_3">Causes</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link click-scroll" href="index.html#section_4">Volunteer</a>
+                            </li>
+                            <li className="nav-item dropdown">
+                                <a className="nav-link click-scroll dropdown-toggle" href="index.html#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">News</a>
+                                <ul className="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                    <li><a className="dropdown-item" href="news.html">News Listing</a></li>
+                                    <li><a className="dropdown-item" href="news-detail.html">News Detail</a></li>
+                                </ul>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link click-scroll" href="index.html#section_6">Contact</a>
+                            </li>
+                            <li className="nav-item ms-3">
+                                <a className="nav-link custom-btn custom-border-btn btn" href="donate.html">Donate</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
             <div className="container">
                 <button onClick={handleLocateMe} style={{ margin: '10px' }}>
                     Locate Me
@@ -225,7 +337,7 @@ const MapWithMarkers = () => {
                     ref={mapRef}
                     center={userLocation ? userLocation.position : [23.8103, 90.4125]}
                     zoom={userLocation ? 13 : 10} // Adjust the zoom level when userLocation is available
-                    style={{ height: '621px', width: '1424px' }}
+                    style={{ height: '545px', width: '1424px' }}
 
                 >
                     <TileLayer
@@ -233,12 +345,13 @@ const MapWithMarkers = () => {
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     />
                     {userLocation && (
-                        <Marker position={userLocation.position} icon={L.icon({ iconUrl: currentLocationIcon, iconSize: [62, 62] })}>
-                            <Tooltip className='custom_tooltip ' permanent>{userLocationName}</Tooltip>
-                            {/* <Tooltip permanent>{userLocation.name}</Tooltip> */}
+                        <Marker position={userLocation.position} icon={L.icon({ iconUrl: currentLocationIcon, iconSize: [62, 62] })} />
+                    )}
 
-
-                        </Marker>
+                    {userLocation && (
+                        <Popup position={userLocation.position} autoClose={false} closeOnEscapeKey={false} closeOnClick={false}>
+                            {userLocationName}
+                        </Popup>
                     )}
                     {roadCoordinates.length > 0 && <Polyline positions={roadCoordinates} color="blue" />}
                     {additionalMarkers.map((marker) => (
@@ -286,6 +399,14 @@ const MapWithMarkers = () => {
                                                     id="foodInput"
                                                     value={foodInputNumber}
                                                     onChange={(e) => setFoodInputNumber(e.target.value)}
+                                                />
+                                                <input
+                                                    placeholder='Number of persons'
+                                                    className='form-control mb-2'
+                                                    type="number"
+                                                    id="foodInput"
+                                                    value={foodInputNumberP}
+                                                    onChange={(e) => setFoodInputNumberP(e.target.value)}
                                                 />
                                                 <button onClick={handleRequestFood}>Request Food</button>
                                             </div>
