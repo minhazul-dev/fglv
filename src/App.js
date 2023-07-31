@@ -12,6 +12,8 @@ import StationeryNgadgets from "./Components/StationeryNgadgets/StationeryNgadge
 import RegisteredOrg from "./Components/RegisteredOrganizations/RegisteredOrg";
 import Registration from "./Components/Registration/RegistrationForm";
 import MostFrequentVolunteerArea from "./Components/MostFrequentLocation/MostFrequentLocation";
+import Scholarship from "./Components/ScholarshipPrograms/Scholarship";
+import Verify from "twilio/lib/rest/Verify";
 
 function App() {
   return (
@@ -31,7 +33,8 @@ function App() {
           <Route path="/registration" element={<Registration />} />
           <Route path="/registeredOrg" element={<RegisteredOrg />} />
           <Route path="/mostFrequentDonationArea" element={<MostFrequentVolunteerArea />} />
-
+          <Route path="/scholarship" element={<Scholarship />} />
+          <Route path="/verification" element={<Verify />} />
 
         </Routes>
 

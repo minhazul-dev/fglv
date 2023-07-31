@@ -663,7 +663,7 @@ const HomePage = () => {
                                         <a href="#" className="social-icon-link bi-linkedin" />
                                     </li>
                                     <li className="social-icon-item">
-                                        <a href="https://youtube.com/templatemo" className="social-icon-link bi-youtube" />
+                                        <a href="/" className="social-icon-link bi-youtube" />
                                     </li>
                                 </ul>
                             </div>
